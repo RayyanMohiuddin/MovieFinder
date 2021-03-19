@@ -1,0 +1,63 @@
+<%-include('./partials/header')%>
+
+<form
+  class="form-inline my-2 my-lg-0"
+  action="/result"
+  method="GET"
+  style="margin-left: 29%; padding-top: 30px"
+>
+  <input
+    class="form-control mr-sm-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+    name="movieName"
+    style="width: 50%"
+  />
+  <button
+    class="btn btn-outline-success my-2 my-sm-0"
+    type="submit"
+    style="background-color: darkgreen; color: white"
+  >
+    Search
+  </button>
+</form>
+<div class="container" style="margin-top: 40px">
+  <%if(moviesDump.Response ==='False'){%>
+  <h1 style="text-align: center">
+    <b>Error : MOVIE NOT FOUND!</b>
+  </h1>
+  <%}else{%>
+  <div
+    class="row"
+    style="align-items: center; margin-left: auto; margin-right: auto"
+  >
+    <%moviesDump.Search.forEach((movie)=> {%>
+    <div
+      class="card"
+      style="
+        width: 18rem;
+        margin: 20px;
+        background-color: rgb(176, 206, 216);
+        margin-left: auto;
+        margin-right: auto;
+      "
+    >
+      <img
+        src="<%=movie.Poster%>"
+        class="card-img-top"
+        alt="<%=movie.Title%>"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%=movie.Title%></h5>
+        <h5 class="card-text"><%=movie.Year%></h5>
+        <a href="/result/<%=movie.imdbID%>" class="btn btn-primary"
+          >Learn More</a
+        >
+      </div>
+    </div>
+    <%})%>
+  </div>
+  <%}%>
+</div>
+<%-include('./partials/footer')%>

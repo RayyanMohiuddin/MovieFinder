@@ -1,0 +1,43 @@
+<%-include('./partials/header')%>
+
+<div class="container">
+  <img
+    src="https://s3-us-west-2.amazonaws.com/flx-editorial-wordpress/wp-content/uploads/2018/03/13153742/RT_300EssentialMovies_700X250.jpg"
+    alt=""
+    style="display: block; margin-left: auto; margin-top: 15px; margin-right: auto; border-radius: 20px; width: 80%;"
+  />
+  <div class="jumbotron jumbotron-fluid" style="background-color: rgb(126, 124, 124)">
+    <div class="container" style="margin-left: auto;
+    margin-right: auto;">
+      <h1
+        class="display-4"
+        style="
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          color: rgb(255, 0, 0);
+          text-align: center;
+        "
+      >
+        <b>MovieFinder</b>
+      </h1>
+      <p class="lead" style="text-align: center;">
+        <b
+          >Search a movie name in the search box given below</b
+        >
+        <form class="form-inline my-2 my-lg-0" action="/result" method="GET" style="margin-left: 29%;">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            name="movieName"
+            style="width: 50%;"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: darkgreen; color: white;">
+            Search
+          </button>
+        </form>
+      </p>
+    </div>
+  </div>
+</div>
+<%-include('./partials/footer')%>
