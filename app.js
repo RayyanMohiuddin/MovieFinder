@@ -15,7 +15,7 @@ app.get('/result', (req,res)=>{
 
         if(!error && response.statusCode === 200) {
             const data = JSON.parse(body)
-            res.render('result', {moviesDump: data})
+            res.render('result', {moviesDump: data, movieName: req.query.movieName})
         }
         else {
             res.send('Something went wrong')

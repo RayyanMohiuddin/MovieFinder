@@ -17,21 +17,24 @@
   <button
     class="btn btn-outline-success my-2 my-sm-0"
     type="submit"
-    style="background-color: darkgreen; color: white"
+    style="background-color: crimson; color: white; border-color: darkred"
   >
     Search
   </button>
 </form>
+
+<% if(movieName !== '' && moviesDump.Response !=='False'){%>
+<h4 style="margin-left: 30px; margin-top: 20px">
+  Showing <b><%=moviesDump.Search.length%></b> results for '<%=movieName%>'
+</h4>
+<%}%>
 <div class="container" style="margin-top: 40px">
   <%if(moviesDump.Response ==='False'){%>
   <h1 style="text-align: center">
     <b>Error : MOVIE NOT FOUND!</b>
   </h1>
   <%}else{%>
-  <div
-    class="row"
-    style="align-items: center; margin-left: auto; margin-right: auto"
-  >
+  <div class="row">
     <%moviesDump.Search.forEach((movie)=> {%>
     <div
       class="card"
@@ -43,15 +46,14 @@
         margin-right: auto;
       "
     >
-      <img
-        src="<%=movie.Poster%>"
-        class="card-img-top"
-        alt="<%=movie.Title%>"
+      <img <%if(movie.Poster === 'N/A' ){%>
+      src="https://causeofaction.org/wp-content/uploads/2013/09/Not-available.gif"
+      <%}%> src="<%=movie.Poster%>" class="card-img-top" alt="<%=movie.Title%>"
       />
       <div class="card-body">
-        <h5 class="card-title"><%=movie.Title%></h5>
+        <h4 class="card-title"><%=movie.Title%></h4>
         <h5 class="card-text"><%=movie.Year%></h5>
-        <a href="/result/<%=movie.imdbID%>" class="btn btn-primary"
+        <a href="/result/<%=movie.imdbID%>" class="btn btn-danger"
           >Learn More</a
         >
       </div>
